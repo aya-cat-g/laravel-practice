@@ -10,7 +10,8 @@ class SampleController extends Controller
     public function index(Request $request)
     {
         $data = [
-            'msg' => 'SAMPLE-INDEX',
+            'msg' => config('sample.message'),
+            'data' => config('sample.data'),
         ];
         return view('hello.index', $data);
     }
