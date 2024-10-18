@@ -19,3 +19,11 @@ Route::middleware([HelloMiddleware::class])->group(function () {
 Route::get('/hello', [HelloController::class, 'index'])->name('hello');
 Route::get('/hello/other', [HelloController::class, 'other']);
 Route::get('/sample', [SampleController::class, 'index'])->name('sample');
+
+Route::get('/hello/get', [HelloController::class, 'get'])->name('hello.get');
+Route::get('/hello/put/{msg}', [HelloController::class, 'put'])->name('hello.put');
+
+Route::get('/hello/getpub', [HelloController::class, 'getPublic'])->name('hello.getPub');
+Route::get('/hello/putpub/{msg}', [HelloController::class, 'putPublic'])->name('hello.putPub');
+Route::get('/hello/download', [HelloController::class, 'download'])->name('hello.download');
+Route::post('/hello/upload', [HelloController::class, 'upload'])->name('hello.upload');
