@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 
 class HelloController extends Controller
@@ -14,20 +15,30 @@ class HelloController extends Controller
         $this->fname = 'sample.txt';
         $this->pname = 'hello.txt';
     }
-    public function index()
+    public function index(Request $request, Response $response)
     {
-
+        $msg = 'Please input text:';
+        $form = [];
+        if ($request->isMethod('post')) {
+            $form = $request->except(['_token']);
+            $msg = old('name') . ', ' . old('mail') . ', ' . old('tel');
+        }
+        $form['id'] = $request->query('id');
         $data = [
-            'msg' => config('sample.message'),
-            'data' => config('sample.data'),
+            'msg' => $msg,
+            'form' => $form,
         ];
-
+        $request->flash();
         return view('hello.index', $data);
     }
 
     public function other(Request $request)
     {
-        return redirect()->route('sample');
+        $data = [
+            'id' => '123',
+            'check' => true,
+        ];
+        return redirect()->route('hello', $data);
     }
 
     public function get()
