@@ -28,3 +28,6 @@ Route::get('/hello/getpub', [HelloController::class, 'getPublic'])->name('hello.
 Route::get('/hello/putpub/{msg}', [HelloController::class, 'putPublic'])->name('hello.putPub');
 Route::get('/hello/download', [HelloController::class, 'download'])->name('hello.download');
 Route::post('/hello/upload', [HelloController::class, 'upload'])->name('hello.upload');
+
+Route::get('/hello/service/{id}', [HelloController::class, 'service'])->name('hello.service');
+Route::get('/hello/serviceset', [HelloController::class, 'serviceSet'])->name('hello.service.set');

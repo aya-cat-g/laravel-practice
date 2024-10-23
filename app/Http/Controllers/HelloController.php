@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\MyClasses\MyService;
+use App\MyClasses\MyServiceInterface;
+use App\MyClasses\MyServiceSet;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
@@ -93,5 +96,23 @@ class HelloController extends Controller
         $filename = "uploaded.{$request->file('file')->extension()}";
         Storage::disk('public')->putFileAs('files', $request->file('file'), $filename);
         return redirect()->route('hello.getPub');
+    }
+
+    public function service(int $id = -1)
+    {
+        $myservice = app()->makeWith('App\MyClasses\MyService', ['id' => $id]);
+        $data = [
+            'msg' => $myservice->getMsg(),
+            'data' => $myservice->getData(),
+        ];
+        return view('hello.simple', $data);
+    }
+    public function serviceSet(MyServiceInterface $myserviceset)
+    {
+        $data = [
+            'msg' => $myserviceset->getMsg(),
+            'data' => $myserviceset->getData(),
+        ];
+        return view('hello.simple', $data);
     }
 }
