@@ -31,3 +31,4 @@ Route::post('/hello/upload', [HelloController::class, 'upload'])->name('hello.up
 
 Route::get('/hello/service/{id}', [HelloController::class, 'service'])->name('hello.service');
 Route::get('/hello/serviceset', [HelloController::class, 'serviceSet'])->name('hello.service.set');
+Route::get('/hello/usefacade', [HelloController::class, 'useFacade'])->name('hello.useFacade');

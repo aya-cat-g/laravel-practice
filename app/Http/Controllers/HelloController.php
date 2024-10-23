@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Facades\MyService as FacadesMyService;
 use App\MyClasses\MyService;
 use App\MyClasses\MyServiceInterface;
 use App\MyClasses\MyServiceSet;
@@ -112,6 +113,15 @@ class HelloController extends Controller
         $data = [
             'msg' => $myserviceset->getMsg(),
             'data' => $myserviceset->getData(),
+        ];
+        return view('hello.simple', $data);
+    }
+    public function useFacade()
+    {
+        FacadesMyService::setId(100);
+        $data = [
+            'msg' => FacadesMyService::getMsg(),
+            'data' => FacadesMyService::getData(),
         ];
         return view('hello.simple', $data);
     }

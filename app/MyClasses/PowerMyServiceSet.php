@@ -20,7 +20,7 @@ class PowerMyServiceSet implements MyServiceInterface
     {
         $this->id = $id;
         if ($id >= 0) {
-            $this->msg = "idはランダム、 {$id}";
+            $this->msg = "idはデフォルトではランダム、 {$id}";
         }
     }
     public function getMsg()
