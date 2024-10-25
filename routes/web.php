@@ -3,6 +3,7 @@
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\Sample\SampleController;
 use App\Http\Middleware\HelloMiddleware;
+use App\Http\Middleware\MyMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,3 +33,5 @@ Route::post('/hello/upload', [HelloController::class, 'upload'])->name('hello.up
 Route::get('/hello/service/{id}', [HelloController::class, 'service'])->name('hello.service');
 Route::get('/hello/serviceset', [HelloController::class, 'serviceSet'])->name('hello.service.set');
 Route::get('/hello/usefacade', [HelloController::class, 'useFacade'])->name('hello.useFacade');
+
+Route::get('/hello/usemid', [HelloController::class, 'useMid'])->middleware('MyMW')->name('hello.useMid');

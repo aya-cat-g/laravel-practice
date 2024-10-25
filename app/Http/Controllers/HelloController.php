@@ -125,4 +125,12 @@ class HelloController extends Controller
         ];
         return view('hello.simple', $data);
     }
+    public function useMid(Request $request)
+    {
+        $data = [
+            'msg' => $request->hello,
+            'data' => $request->data,
+        ];
+        return view('hello.simple', $data);
+    }
 }

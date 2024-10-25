@@ -21,14 +21,10 @@ class MyServiceProvider extends ServiceProvider
         });
         $this->app->singleton('myservice', PowerMyServiceSet::class);
         $this->app->singleton(MyServiceInterface::class, PowerMyServiceSet::class);
-        echo "MyServiceProvider/register<br>";
     }
 
     /**
      * Bootstrap services.
      */
-    public function boot(): void
-    {
-        echo "MyServiceProvider/boot<br>";
-    }
+    public function boot(): void {}
 }
